@@ -1,24 +1,28 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Button } from '@mui/material'
 import styled from '@emotion/styled'
+import { css } from '@emotion/react'
 
 type Props = {
     children: string;
     onClick: VoidFunction;
     size: "small" | "large" | "medium" | undefined;
+    className: string;
 }
 
-const BaseButton: React.FC<Props> = (props) => {
-  const { children, onClick, size } = props;
+const BaseButton: FC<Props> = (props) => {
+  const { children, onClick, size, className } = props;
 
   return (
     <>
       <StyledButton 
+        className={className} 
         variant="outlined" 
         size={size} 
-        onClick={onClick}>{children}
+        onClick={onClick}>
+          {children}
       </StyledButton>
-    </>
+      </>
   )
 }
 
