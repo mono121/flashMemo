@@ -7,6 +7,7 @@ import MainButton from '../Molecule/MainButton'
 const Test = () => {
   return (
     <div>
+      <h1>Test page</h1>
       <MainButton />
       <ShuffleIcon />
       <WordCard />

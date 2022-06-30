@@ -1,10 +1,12 @@
 import React from 'react'
+import MainButton from '../Molecule/MainButton'
 
 const Create = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      <h1>Create page</h1>
+      <MainButton />
+    </>
   )
 }
 

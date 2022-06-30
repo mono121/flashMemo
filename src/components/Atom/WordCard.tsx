@@ -4,9 +4,20 @@ import styled from '@emotion/styled'
 
 const WordCard = () => {
   return (
-    <Grid container direction="column" alignItems="center" sx={{ marginTop: '30px' }}>
+    <Grid container 
+      direction="column" 
+      alignItems="center" 
+      sx={{ marginTop: '30px' }}>
       <Grid item>
-        <Card sx={{ textAlign: 'center', width: 400, height: 200 }} elevation={3}>aaa</Card>
+        <Card 
+          sx={{ width: 400, 
+          height: 200,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center' }} 
+          elevation={3}>
+            <h2>befoer</h2>
+          </Card>
       </Grid>
     </Grid>
   )
