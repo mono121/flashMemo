@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
@@ -14,6 +14,7 @@ const Test = () => {
   const [cardId, setCardId] = useState(0);
   const [answer, setAnswer] = useState(false)
   const [swap, setSwap] = useState(false)
+  const [userInfo, setUserInfo] = useState(user)
 
   const nextCard = () => {
     if(cardId===user.length-1){
@@ -33,16 +34,29 @@ const Test = () => {
 
   const swapCard = () => {setSwap(!swap)}
 
-  const showAnser = () => {setAnswer(!answer)}
+  const showAnser = () => {setAnswer(true)}
+
+  const shuffle = () => {
+    const cloneUser = userInfo
+
+    for (let i = cloneUser.length - 1; i >= 0; i--) {
+      let rand = Math.floor(Math.random() * (i + 1))
+      // 配列の要素の順番を入れ替える
+      let tmpStorage = cloneUser[i]
+      cloneUser[i] = cloneUser[rand]
+      cloneUser[rand] = tmpStorage
+    }
+
+    setUserInfo(cloneUser)
+  }
 
   return (
     <div>
       <MainButton />
-      <StyledShuffle>
-    	  <ShuffleIcon fontSize='large' sx={{ marginRight: '100px'}} />
+      <StyledIcon>
+    	  <ShuffleIcon onClick={shuffle} fontSize='large' sx={{ marginRight: '100px'}} />
     	  <SyncAltIcon onClick={swapCard} fontSize='large' />
-      </StyledShuffle>
-
+      </StyledIcon>
       <WordCard>
         {
         swap 
@@ -50,7 +64,6 @@ const Test = () => {
           : answer ? user[cardId].meaning : user[cardId].word
         }
       </WordCard>
-
       <BeforeNextAnswer>
         <StyledIcon>
           <NavigateBeforeIcon onClick={beforeCard} sx={{ fontSize: 60 }} />
@@ -73,11 +86,6 @@ const BeforeNextAnswer = styled(`div`)({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-})
-
-const StyledShuffle = styled('div')({
-  textAlign: 'center',
-	marginTop: '20px',
 })
 
 const user = [
