@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Card, Grid } from '@mui/material'
-import styled from '@emotion/styled'
 
-const WordCard = () => {
+type Props = {
+  children: string;
+}
+
+const WordCard: FC<Props> = (props) => {
+  const {children} = props
+
   return (
     <Grid container 
       direction="column" 
@@ -10,13 +15,13 @@ const WordCard = () => {
       sx={{ marginTop: '30px' }}>
       <Grid item>
         <Card 
-          sx={{ width: 400, 
-          height: 200,
+          sx={{ width: 500, 
+          height: 250,
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center' }} 
           elevation={3}>
-            <h2>befoer</h2>
+            <h2>{children}</h2>
           </Card>
       </Grid>
     </Grid>

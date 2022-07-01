@@ -1,18 +1,18 @@
 import React from 'react'
-import SyncIcon from '@mui/icons-material/Sync';
+import ShuffleIcon from '@mui/icons-material/Shuffle';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import styled from '@emotion/styled';
 
-const ShuffleIcon = () => {
+const ShuffleButton = () => {
   return (
     <StyledIcon>
-    	<SyncIcon fontSize='large' sx={{ marginRight: '100px'}} />
+    	<ShuffleIcon fontSize='large' sx={{ marginRight: '100px'}} />
     	<SyncAltIcon fontSize='large' />
     </StyledIcon>
   )
 }
 
-export default ShuffleIcon
+export default ShuffleButton
 
 const StyledIcon = styled('div')({
   textAlign: 'center',
