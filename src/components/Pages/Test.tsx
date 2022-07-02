@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
@@ -41,7 +41,6 @@ const Test = () => {
 
     for (let i = cloneUser.length - 1; i >= 0; i--) {
       let rand = Math.floor(Math.random() * (i + 1))
-      // 配列の要素の順番を入れ替える
       let tmpStorage = cloneUser[i]
       cloneUser[i] = cloneUser[rand]
       cloneUser[rand] = tmpStorage
