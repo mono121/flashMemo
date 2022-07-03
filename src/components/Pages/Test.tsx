@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
-
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
-import WordCard from '../Atom/WordCard'
-import MainButton from '../Molecule/MainButton'
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+
+import WordCard from '../Atom/WordCard'
+import MainButton from '../Molecule/MainButton'
 import AnserButton from '../Atom/Button/AnserButton'
 
 const Test = () => {
@@ -15,6 +15,8 @@ const Test = () => {
   const [answer, setAnswer] = useState(false)
   const [swap, setSwap] = useState(false)
   const [userInfo, setUserInfo] = useState(user)
+  //強制再レンダリング
+  const [update,setUpdata]=useState<boolean>(false)
 
   const nextCard = () => {
     if(cardId===user.length-1){
@@ -38,23 +40,27 @@ const Test = () => {
 
   const shuffle = () => {
     const cloneUser = userInfo
-
     for (let i = cloneUser.length - 1; i >= 0; i--) {
       let rand = Math.floor(Math.random() * (i + 1))
       let tmpStorage = cloneUser[i]
       cloneUser[i] = cloneUser[rand]
       cloneUser[rand] = tmpStorage
     }
-
     setUserInfo(cloneUser)
+    //シャッフル時、最初のカードにセットし答えを隠す
+    setCardId(0)
+    setAnswer(false)
+    setUpdata(update?false:true)
   }
 
   return (
     <div>
       <MainButton />
       <StyledIcon>
-    	  <ShuffleIcon onClick={shuffle} fontSize='large' sx={{ marginRight: '100px'}} />
-    	  <SyncAltIcon onClick={swapCard} fontSize='large' />
+    	  <ShuffleIcon onClick={shuffle} fontSize='large' 
+          sx={{ marginRight: '100px', "&:hover": {cursor: 'pointer',  opacity: '0.5' }}} />
+    	  <SyncAltIcon onClick={swapCard} fontSize='large'
+          sx={{ "&:hover": {cursor: 'pointer',  opacity: '0.5' }}} />
       </StyledIcon>
       <WordCard>
         {
@@ -65,8 +71,10 @@ const Test = () => {
       </WordCard>
       <BeforeNextAnswer>
         <StyledIcon>
-          <NavigateBeforeIcon onClick={beforeCard} sx={{ fontSize: 60 }} />
-          <NavigateNextIcon onClick={nextCard} sx={{ fontSize: 60, marginRight: '50px' }} />
+          <NavigateBeforeIcon onClick={beforeCard} 
+            sx={{ fontSize: 60, "&:hover": {cursor: 'pointer',  opacity: '0.5' } }} />
+          <NavigateNextIcon onClick={nextCard} 
+            sx={{ fontSize: 60, marginRight: '50px', "&:hover": {cursor: 'pointer',  opacity: '0.5' } }} />
         </StyledIcon>
         <AnserButton onClick={showAnser} />
       </BeforeNextAnswer>
