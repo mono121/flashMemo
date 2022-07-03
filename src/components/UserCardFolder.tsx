@@ -1,3 +1,4 @@
+import { color } from '@mui/system'
 import React, { FC } from 'react'
 import { UserFolder } from "../types/userFolder"
 
@@ -25,6 +26,7 @@ const UserCardFolder: FC<Props> = (props) => {
 export default UserCardFolder
 
 const style = {
+  background: "white",
   border: "solid 1px #ccc",
   borderRadius: "8px",
   padding: "0 16px",

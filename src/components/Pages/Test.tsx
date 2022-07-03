@@ -42,9 +42,9 @@ const Test = () => {
     const cloneUser = userInfo
     for (let i = cloneUser.length - 1; i >= 0; i--) {
       let rand = Math.floor(Math.random() * (i + 1))
-      let tmpStorage = cloneUser[i]
+      let tmp = cloneUser[i]
       cloneUser[i] = cloneUser[rand]
-      cloneUser[rand] = tmpStorage
+      cloneUser[rand] = tmp
     }
     setUserInfo(cloneUser)
     //シャッフル時、最初のカードにセットし答えを隠す
@@ -72,9 +72,9 @@ const Test = () => {
       <BeforeNextAnswer>
         <StyledIcon>
           <NavigateBeforeIcon onClick={beforeCard} 
-            sx={{ fontSize: 60, "&:hover": {cursor: 'pointer',  opacity: '0.5' } }} />
+            sx={{ fontSize: 60, "&:hover": {cursor: 'pointer', opacity: '0.5' } }} />
           <NavigateNextIcon onClick={nextCard} 
-            sx={{ fontSize: 60, marginRight: '50px', "&:hover": {cursor: 'pointer',  opacity: '0.5' } }} />
+            sx={{ fontSize: 60, marginRight: '50px', "&:hover": {cursor: 'pointer', opacity: '0.5' } }} />
         </StyledIcon>
         <AnserButton onClick={showAnser} />
       </BeforeNextAnswer>
